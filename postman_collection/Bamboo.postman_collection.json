@@ -1,0 +1,400 @@
+{
+	"info": {
+		"_postman_id": "953376e0-4798-4105-aeed-6c5271f93155",
+		"name": "Bamboo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39100768"
+	},
+	"item": [
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Add New Pet",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"// Validate response content type",
+									"pm.test(\"Response content type is application/json\", function () {",
+									"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+									"});",
+									"",
+									"// Validate response body structure",
+									"const response = pm.response.json();",
+									"pm.test(\"Response body has required fields\", function () {",
+									"    pm.expect(response).to.have.all.keys('id', 'category', 'name', 'photoUrls', 'tags', 'status');",
+									"});",
+									"",
+									"// Validate category structure",
+									"pm.test(\"Category has required fields\", function () {",
+									"    pm.expect(response.category).to.have.all.keys('id', 'name');",
+									"});",
+									"",
+									"// Validate tags structure",
+									"pm.test(\"Tags is an array and contains objects with required fields\", function () {",
+									"    pm.expect(response.tags).to.be.an('array');",
+									"    response.tags.forEach(tag => {",
+									"        pm.expect(tag).to.have.all.keys('id', 'name');",
+									"    });",
+									"});",
+									"",
+									"// Validate photoUrls is an array",
+									"pm.test(\"PhotoUrls is an array\", function () {",
+									"    pm.expect(response.photoUrls).to.be.an('array');",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Generate a unique random ID using timestamp and random number",
+									"const timestamp = Date.now();",
+									"const randomNum = Math.floor(Math.random() * 100000);",
+									"const uniqueId = `${timestamp}${randomNum}`;",
+									"",
+									"// Arrays of first and last names",
+									"const firstNames = ['Emma', 'Liam', 'Olivia', 'Noah', 'Ava', 'Sophia', 'Jackson', 'Isabella', 'Lucas', 'Mia'];",
+									"const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez'];",
+									"",
+									"",
+									"// Generate random first and last names",
+									"const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];",
+									"const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];",
+									"const randomPetName = `${randomFirstName} ${randomLastName}`;",
+									"",
+									"",
+									"//// Array for random pet categories with corresponding IDs",
+									"const petCategories = [",
+									"  { id: 1, name: 'Dog' },",
+									"  { id: 2, name: 'Cat' },",
+									"  { id: 3, name: 'Bird' },",
+									"  { id: 4, name: 'Fish' },",
+									"  { id: 5, name: 'Reptile' }",
+									"];",
+									"",
+									"// Generate a random pet category",
+									"const randomCategory = petCategories[Math.floor(Math.random() * petCategories.length)];",
+									"",
+									"//// Generate a random photo URL using Lorem Picsum",
+									"const randomImageId = Math.floor(Math.random() * 1000); // Random number for unique image",
+									"const randomPhotoUrl = `https://picsum.photos/200/300?random=${randomImageId}`;",
+									"",
+									"",
+									"// Generate a random status",
+									"const statusOptions = ['available', 'pending', 'sold'];",
+									"const randomStatus = statusOptions[Math.floor(Math.random() * statusOptions.length)];",
+									"",
+									"",
+									"// Generate a random tag name",
+									"",
+									"const tagNames = ['Friendly', 'Playful', 'Trained', 'Energetic', 'Calm', 'Loyal', 'Smart'];",
+									"const randomTagName = tagNames[Math.floor(Math.random() * tagNames.length)];",
+									"",
+									"// Random tag ID between 1 and 1000",
+									"const randomTagId = Math.floor(Math.random() * 1000) + 1; ",
+									"",
+									"",
+									"",
+									"// set the unique ID in an environment variable",
+									"pm.environment.set('uniqueRandomId', uniqueId);",
+									"",
+									"// Set the random name in an environment variable",
+									"pm.environment.set('randomPetName', randomPetName);",
+									"",
+									"//Set random category id an in environment variable",
+									"pm.environment.set('categoryId', randomCategory.id);",
+									"",
+									"//Set random category name in an environment variable",
+									"pm.environment.set('categoryName', randomCategory.name);",
+									"",
+									"//Set random photo url in an environment variable",
+									"pm.environment.set('randomPhotoUrl', randomPhotoUrl);",
+									"",
+									"//Set random tag name in an environment variable",
+									"pm.environment.set('randomTagName', randomTagName);",
+									"",
+									"//Set random tag id in an environment variable",
+									"pm.environment.set('randomTagId', randomTagId);",
+									"",
+									"//Set random Status in an environment variable",
+									"pm.environment.set('randomStatus', randomStatus);",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": {{uniqueRandomId}},\n  \"category\": {\n    \"id\": {{categoryId}},\n    \"name\": \"{{categoryName}}\"\n  },\n  \"name\": \"{{randomPetName}}\",\n  \"photoUrls\": [\n    \"{{randomPhotoUrl}}\"\n  ],\n  \"tags\": [\n    {\n      \"id\": {{randomTagId}},\n      \"name\": \"{{randomTagName}}\"\n    }\n  ],\n  \"status\": \"{{randomStatus}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}://petstore.swagger.io/v2/pet",
+							"protocol": "{{url}}",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Pet - Missing Name Negative Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Pet name field should not be empty\", function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.name).to.not.be.empty;",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": {{uniqueRandomId}},\n  \"category\": {\n    \"id\": {{categoryId}},\n    \"name\": \"{{categoryName}}\"\n  },\n  \"name\": \"\",\n  \"photoUrls\": [\n    \"{{randomPhotoUrl}}\"\n  ],\n  \"tags\": [\n    {\n      \"id\": {{randomTagId}},\n      \"name\": \"\"\n    }\n  ],\n  \"status\": \"{{randomStatus}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}://petstore.swagger.io/v2/pet",
+							"protocol": "{{url}}",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Pet - Invalid Status Negative Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response status matches randomStatus\", function () {",
+									"    const json = pm.response.json();",
+									"    const randomStatus = pm.environment.get('randomStatus');",
+									"    console.log(\"Environment randomStatus:\", pm.environment.get('randomStatus'));",
+									"    console.log(\"Response status:\", json.status);",
+									"    pm.expect(json.status, `Response status '${json.status}' does not match randomStatus '${randomStatus}'`).to.equal(randomStatus);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": {{uniqueRandomId}},\n  \"category\": {\n    \"id\": {{categoryId}},\n    \"name\": \"{{categoryName}}\"\n  },\n  \"name\": \"\",\n  \"photoUrls\": [\n    \"{{randomPhotoUrl}}\"\n  ],\n  \"tags\": [\n    {\n      \"id\": {{randomTagId}},\n      \"name\": \"\"\n    }\n  ],\n  \"status\": \"Invalid status\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}://petstore.swagger.io/v2/pet",
+							"protocol": "{{url}}",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "Fetch Pet Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();",
+									"",
+									"// Test Suite for Fetch Pet Details API",
+									"pm.test('Status code is 200', function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"",
+									"// Verify response matches environment variables",
+									"pm.test('Response data matches sent data', function () {",
+									"    ",
+									"    pm.expect(response.id).to.equal(Number(pm.environment.get('uniqueRandomId')));",
+									"    pm.expect(response.category.id).to.equal(Number(pm.environment.get('categoryId')));",
+									"    pm.expect(response.category.name).to.equal(pm.environment.get('categoryName'));",
+									"    pm.expect(response.name).to.equal(pm.environment.get('randomPetName'));",
+									"    pm.expect(response.photoUrls).to.deep.equal([pm.environment.get('randomPhotoUrl')]);",
+									"    pm.expect(response.tags).to.deep.equal([{",
+									"        id: Number(pm.environment.get('randomTagId')),",
+									"        name: pm.environment.get('randomTagName')",
+									"    }]);",
+									"    pm.expect(response.status).to.equal(pm.environment.get('randomStatus'));",
+									"});",
+									"",
+									"",
+									"// Validate response schema",
+									"pm.test('Response has valid schema', function () {",
+									"    const schema = {",
+									"        type: 'object',",
+									"        properties: {",
+									"            id: { type: 'number' },",
+									"            category: {",
+									"                type: 'object',",
+									"                properties: {",
+									"                    id: { type: 'number' },",
+									"                    name: { type: 'string' }",
+									"                },",
+									"                required: ['id', 'name']",
+									"            },",
+									"            name: { type: 'string' },",
+									"            photoUrls: {",
+									"                type: 'array',",
+									"                items: { type: 'string' }",
+									"            },",
+									"            tags: {",
+									"                type: 'array',",
+									"                items: {",
+									"                    type: 'object',",
+									"                    properties: {",
+									"                        id: { type: 'number' },",
+									"                        name: { type: 'string' }",
+									"                    },",
+									"                    required: ['id', 'name']",
+									"                }",
+									"            },",
+									"            status: { type: 'string', enum: ['available', 'pending', 'sold'] }",
+									"        },",
+									"        required: ['id', 'name', 'photoUrls', 'status']",
+									"    };",
+									"    const response = pm.response.json();",
+									"    pm.expect(tv4.validate(response, schema)).to.be.true;",
+									"});",
+									"",
+									"",
+									"// Verify error response fields",
+									"pm.test('Response is not found or saved in the DB', function () {",
+									"    const response = pm.response.json();",
+									"    pm.expect(response.code).to.equal(1);",
+									"    pm.expect(response.type).to.equal('error');",
+									"    pm.expect(response.message).to.equal('Pet not found');",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}://petstore.swagger.io/v2/pet/{{uniqueRandomId}}",
+							"protocol": "{{url}}",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"{{uniqueRandomId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
