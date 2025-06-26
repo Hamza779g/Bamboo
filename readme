@@ -1,0 +1,135 @@
+![Cypress Version](https://img.shields.io/badge/Cypress-14.0.1-brightgreen)
+![Node Version](https://img.shields.io/badge/Node-18.x%20|%2020.x%20|%2022.x-success)
+
+
+# 🧪 Magento Cypress Automation Framework
+
+This project contains end-to-end UI automation tests built with [Cypress](https://www.cypress.io/) for the demo Magento e-commerce site:  
+
+🔗 https://magento.softwaretestingboard.com/
+
+The framework follows best practices including:
+- 🔁 Page Object Model (POM)
+- 📊 Custom Reporting
+- 📂 External test data support (JSON, CSV, Excel)
+- 🔒 Secure environment variable handling
+- 📦 Organized folder structure for scalability
+
+
+
+## 🧩 Test Scenarios Covered
+
+| Test Case | Description |
+|----------|-------------|
+| ✅ **Test Case A** | **Registration Flow** with Login Validation |
+| ✅ **Test Case B** | **Place Order** with Multiple Products (with Price Calculations) |
+| ✅ **Test Case C** | **Add Products to Wishlist** and Checkout from Wishlist |
+| ✅ **Test Case D** | **Search** and Validate Product Results |
+
+---
+
+
+
+## 📁 Folder Structure
+
+```
+Cypress/
+│
+├── e2e/
+│ ├── suite/
+│ │ └── magentoSuite.cy.js # Suite runner
+│ ├── placeMultipleProducts.cy.js # Test Case B
+│ ├── productSearch.cy.js # Test Case D
+│ ├── registration.cy.js # Test Case A
+│ └── wishlistCheckoutProducts.cy.js # Test Case C
+│
+├── fixtures/
+│ └── userAddress.json # Test data for checkout
+│
+├── pageObjects/
+│ ├── selectors/
+│ │ ├── myAccountPage.selectors.js
+│ │ ├── placeMultipleProductsPage.selectors.js
+│ │ ├── productSearchPage.selectors.js
+│ │ ├── registrationPage.selectors.js
+│ │ └── wishlistCheckoutProductsPage.selectors.js
+│ ├── PlaceMultipleProductsPage.js
+│ ├── ProductSearchPage.js
+│ ├── RegistrationPage.js
+│ └── WishlistCheckoutProductsPage.js
+│
+├── support/
+│ ├── commands.js # Custom Cypress commands
+│ ├── e2e.js # Global hooks and config
+│ └── generateUserEnv.js # Utility to generate dynamic test data
+│
+├── reports/ # Generated test reports
+├── screenshots/ # Screenshots captured on test failure
+├── videos/ # Video recordings of test runs
+├── downloads/ # Downloaded files during test
+```
+
+---
+
+## ⚙️ Tech Stack
+
+- 🧪 Cypress v13+
+- 📄 JSON (external test data)
+- 📈 Mochawesome Reports
+- 📦 Faker (for random user data)
+- 🔐 dotenv (`.env` file) for environment secrets
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/magento-cypress-automation.git
+cd magento-cypress-automation
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+### 3. Add .env file
+```bash
+CYPRESS_BASE_URL=https://magento.softwaretestingboard.com
+CYPRESS_USER_EMAIL=your_email@example.com
+CYPRESS_USER_PASSWORD=your_secure_password
+```
+**🔐 Do not commit your** ```.env ``` **file to GitHub.**
+
+## 📊 Run Tests
+### Run All Tests (Headless with Report)
+```bash
+npx cypress run
+```
+
+### Open Cypress Test Runner (GUI)
+```bash
+npm run pretest:e2e && npx cypress open
+```
+
+### Run Specific Test
+```bash
+example: npx cypress run --spec "cypress/e2e/registration.cy.js"
+```
+
+### 🧠 Highlights & Best Practices Used
+- ✅ Fully modular Page Object Model
+- ✅ Externalized selectors and test data
+- ✅ Reusability via custom commands and utility functions
+- ✅ Clean separation of concerns
+- ✅ Dynamic data generation using Faker
+- ✅ Assertions for both UI & Business Logic validations
+
+
+
+### Add Execute Permissions to the Cypress Binary If required according to your file path:
+- chmod +x /Users/username/Desktop/assignment/node_modules/.bin/cypress
+
+### Check the permissions of the Cypress binary to confirm the change according to your file path:
+- ls -l /Users/username/Desktop/assignment/node_modules/.bin/cypress

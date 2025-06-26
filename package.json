@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "cypress": "^14.5.0",
+    "dotenv": "^16.5.0"
+  },
+  "scripts": {
+    "pretest:e2e": "node cypress/support/generateUserEnv.js",
+    "test:e2e": "npx cypress run --headless --browser chrome",
+    "open:e2e": "npm run pretest:e2e && npx cypress open",
+    "ci:e2e": "npm run pretest:e2e && npm run test:e2e"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^5.0.0",
+    "mochawesome-report-generator": "^6.2.0"
+  }
+}

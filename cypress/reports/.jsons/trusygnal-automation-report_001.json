@@ -1,0 +1,136 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-06-25T15:18:24.500Z",
+    "end": "2025-06-25T15:18:39.641Z",
+    "duration": 15141,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8b74debf-ce5a-4e7d-bc7b-fc96419f0f78",
+      "title": "",
+      "fullFile": "cypress\\e2e\\suites\\magentoSuite.cy.js",
+      "file": "cypress\\e2e\\suites\\magentoSuite.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "aeae401e-1da0-47c1-a54a-0852ee8e349a",
+          "title": "Test Case (B):",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "5a64630e-4d8a-4ac8-a382-31c8a3817f57",
+              "title": "Place order with multiple products (apply price calculation checks)",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Register a new user and verify success message",
+                  "fullTitle": "Test Case (B): Place order with multiple products (apply price calculation checks) Register a new user and verify success message",
+                  "timedOut": null,
+                  "duration": 15085,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": "[\n  {\n    \"title\": \"cypress-mochawesome-reporter-videos-failed\",\n    \"value\": \"cypress\\\\e2e\\\\suites\\\\magentoSuite.cy.js\"\n  },\n  {\n    \"title\": \"cypress-mochawesome-reporter-screenshots\",\n    \"value\": [\n      [\n        \"\\\\suites\\\\magentoSuite.cy.js\\\\Test Case (B) -- Place order with multiple products (apply price calculation checks) -- Register a new user and verify success message (failed).png\"\n      ]\n    ]\n  }\n]",
+                  "code": "",
+                  "err": {
+                    "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[class=\"swatch-option color\"]`, but never found it. Queried from:\n\n              > <span.price>",
+                    "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `[class=\"swatch-option color\"]`, but never found it. Queried from:\n\n              > <span.price>\n    at Context.eval (webpack:///./cypress/e2e/order/placeMultipleProducts.cy.js:43:19)\n    at Context.callback (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:121176:26)\n    at getRet (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:120941:20)\n    at tryCatcher (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:4285:29)\n    at thenFn (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:120952:66)\n    at yieldItem (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:121184:16)\n    at tryCatcher (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Object.gotValue (https://magento.softwaretestingboard.com/__cypress/runner/cypress_runner.js:6446:18)",
+                    "diff": null
+                  },
+                  "uuid": "4f038a2b-b23f-45e8-8c1d-8990d31cbc5c",
+                  "parentUUID": "5a64630e-4d8a-4ac8-a382-31c8a3817f57",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "4f038a2b-b23f-45e8-8c1d-8990d31cbc5c"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 15085,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "trusygnal-automation-report",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": false
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress\\reports\\.jsons",
+        "reportFilename": "trusygnal-automation-report",
+        "charts": true,
+        "reportPageTitle": "TruSygnals Automation Suite Execution Report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": true,
+        "showHooks": "none",
+        "code": false,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+export const selectors = {
+  productCard: '[class="item product product-item"]',
+  productPrice: '[class="price"]',
+  colorSwatch: '[class="swatch-option color"]',
+  sizeSwatch: '[class="swatch-option text"]',
+  addToCartButton: '[class="action tocart primary"]',
+  miniCartToggle: '[class="action showcart"]',
+  miniCartPrice: '[class="minicart-price"]',
+  checkoutButton: '[id="top-cart-btn-checkout"]',
+
+  companyInput: '[name="company"]',
+  streetInput: '[name="street[0]"]',
+  cityInput: '[name="city"]',
+  regionDropdown: 'select[name="region_id"]',
+  postcodeInput: '[name="postcode"]',
+  telephoneInput: '[name="telephone"]',
+  shippingMethodRadio: '[name="ko_unique_4"]',
+  shippingMethodPrice: '[class="col col-price"]',
+  continueToPayment: '[data-role="opc-continue"]',
+
+  cartSubtotal: '[data-th="Cart Subtotal"]',
+  discountAmount: '[data-th="checkout.sidebar.summary.totals.discount"]',
+  shippingAmount: '[data-th="Shipping"]',
+  orderTotalAmount: '[data-bind="text: getValue()"]',
+};
