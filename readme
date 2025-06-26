@@ -86,7 +86,6 @@ Cypress/
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/Hamza779g/Bamboo.git
-cd magento-cypress-automation
 ```
 
 ### 2. Install Dependencies
@@ -94,7 +93,7 @@ cd magento-cypress-automation
 npm install or npm i 
 ```
 
-### 3. Add .env file
+### 3. Add .env file, if env file is missing or empty
 ```bash
 CYPRESS_BASE_URL=https://magento.softwaretestingboard.com
 CYPRESS_USER_EMAIL=your_email@example.com
