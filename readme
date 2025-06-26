@@ -85,13 +85,13 @@ Cypress/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/magento-cypress-automation.git
+git clone https://github.com/Hamza779g/Bamboo.git
 cd magento-cypress-automation
 ```
 
 ### 2. Install Dependencies
 ```bash
-npm install
+npm install or npm i 
 ```
 
 ### 3. Add .env file
@@ -110,7 +110,7 @@ npx cypress run
 
 ### Open Cypress Test Runner (GUI)
 ```bash
-npm run pretest:e2e && npx cypress open
+npm run pretest:e2e && ( npx cypress open or npm run open:e2e)
 ```
 
 ### Run Specific Test
